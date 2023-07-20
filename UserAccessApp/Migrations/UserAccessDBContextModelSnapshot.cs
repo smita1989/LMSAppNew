@@ -38,10 +38,10 @@ namespace UserAccessApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("LoanAmount")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double?>("LoanAmount")
+                        .HasColumnType("float");
 
-                    b.Property<string>("LoanHistory")
+                    b.Property<string>("LoanDocuments")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -49,11 +49,10 @@ namespace UserAccessApp.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("LoanTerm")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Loanfees")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double?>("Loanfees")
+                        .HasColumnType("float");
 
                     b.Property<string>("OriginalAccount")
                         .IsRequired()
@@ -66,9 +65,8 @@ namespace UserAccessApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -78,32 +76,6 @@ namespace UserAccessApp.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("LoanDetails");
-                });
-
-            modelBuilder.Entity("UserAccessApp.Models.LoanDocumentsDetails", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("DocNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DocType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("LoanId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LoanId");
-
-                    b.ToTable("LoanDocumentsDetails");
                 });
 
             modelBuilder.Entity("UserAccessApp.Models.User", b =>
@@ -130,6 +102,9 @@ namespace UserAccessApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -148,22 +123,6 @@ namespace UserAccessApp.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("UserAccessApp.Models.LoanDocumentsDetails", b =>
-                {
-                    b.HasOne("UserAccessApp.Models.LoanDetails", "LoanDetails")
-                        .WithMany("LoanDocumentsDetails")
-                        .HasForeignKey("LoanId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("LoanDetails");
-                });
-
-            modelBuilder.Entity("UserAccessApp.Models.LoanDetails", b =>
-                {
-                    b.Navigation("LoanDocumentsDetails");
                 });
 
             modelBuilder.Entity("UserAccessApp.Models.User", b =>

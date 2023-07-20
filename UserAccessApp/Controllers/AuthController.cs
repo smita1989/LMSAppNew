@@ -15,10 +15,10 @@ namespace UserAccessApp.Controllers
         {
             _authService = authService;
         }
-        [HttpPost("authenticate")]
-        public IActionResult Authenticate(User model)
+        [HttpPost]
+        public IActionResult Authenticate(Login model)
         {
-            var response = _authService.GenerateToken(model);
+            var response = _authService.Authenticate(model);
 
             if (response == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
