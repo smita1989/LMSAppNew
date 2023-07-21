@@ -20,7 +20,7 @@ namespace LMSApp.Controllers
             _loanService = loanService;
         }
      
-        [HttpGet]
+        [HttpGet(Name = "GetAllLoanDetails")]
         public IActionResult GetAllLoanDetails()
         {
             var res = _loanService.GetAllLoans();
@@ -58,7 +58,7 @@ namespace LMSApp.Controllers
         }
 
        
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult UpdateLoanDetails(LoanDetails loanDetails)
         {
             if (loanDetails == null)
@@ -69,11 +69,11 @@ namespace LMSApp.Controllers
             return Ok();
         }
 
-        public IActionResult SearchLoanDetails(string? FirstName,string? LastName,int? LoanNumber)
-        {
-            // commit
-            return Ok();
-        }
+        //public IActionResult SearchLoanDetails(string? FirstName,string? LastName,int? LoanNumber)
+        //{
+        //    // commit
+        //    return Ok();
+        //}
         
     }
 }

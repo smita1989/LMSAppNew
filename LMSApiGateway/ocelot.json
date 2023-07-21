@@ -17,9 +17,45 @@
       ]
     },
     {
-      "UpstreamPathTemplate": "/gateway/Loan/GetAllLoanDetails",
+      "UpstreamPathTemplate": "/gateway/Loan",
       "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/api/Loan/GetAllLoanDetails",
+      "DownstreamPathTemplate": "/api/Loan",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/Loan",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/Loan",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/Loan",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamPathTemplate": "/api/Loan",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/Loan/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Loan/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
