@@ -28,9 +28,6 @@ namespace UserAccessApp.Models
         [ForeignKey("User")]
         [Required]
         public int UserId { get; set; }
-        public User User { get; set; }
-
-        
 
     }
 }

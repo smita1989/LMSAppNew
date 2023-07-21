@@ -116,13 +116,11 @@ namespace UserAccessApp.Migrations
 
             modelBuilder.Entity("UserAccessApp.Models.LoanDetails", b =>
                 {
-                    b.HasOne("UserAccessApp.Models.User", "User")
+                    b.HasOne("UserAccessApp.Models.User", null)
                         .WithMany("LoanDetails")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("UserAccessApp.Models.User", b =>

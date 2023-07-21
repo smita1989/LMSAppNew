@@ -12,7 +12,7 @@ using UserAccessApp.DBContext;
 namespace UserAccessApp.Migrations
 {
     [DbContext(typeof(UserAccessDBContext))]
-    [Migration("20230720144349_initial")]
+    [Migration("20230720122617_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -118,13 +118,11 @@ namespace UserAccessApp.Migrations
 
             modelBuilder.Entity("UserAccessApp.Models.LoanDetails", b =>
                 {
-                    b.HasOne("UserAccessApp.Models.User", "User")
+                    b.HasOne("UserAccessApp.Models.User", null)
                         .WithMany("LoanDetails")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("UserAccessApp.Models.User", b =>

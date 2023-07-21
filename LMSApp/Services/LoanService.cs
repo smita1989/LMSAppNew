@@ -29,6 +29,11 @@ namespace LMSApp.Services
             _dbContext.SaveChanges();
         }
 
+        public LoanDetails SerachLoanDetails(string? FirstName, string? LastName, int LoanNumber)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateLoanDetails(LoanDetails loanDetails)
         {
             LoanDetails entitity=_dbContext.LoanDetails.FirstOrDefault(e=>e.LoanId== loanDetails.LoanId);

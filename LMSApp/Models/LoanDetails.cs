@@ -24,6 +24,9 @@ namespace LMSApp.Models
         public string? LienInfo { get; set; }
         public string? LoanDocuments { get; set; }
 
+
+        [ForeignKey("User")]
+        [Required]
         public int UserId { get; set; }
     }
 }

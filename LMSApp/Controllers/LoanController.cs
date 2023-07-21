@@ -17,35 +17,60 @@ namespace LMSApp.Controllers
             _dBContext = dBContext;
             _loanService = loanService;
         }
-        // GET: api/<LoanController>
+     
         [HttpGet]
-        public IEnumerable<LoanDetails> Get()
+        public IActionResult GetAllLoanDetails()
         {
             var res = _loanService.GetAllLoans();
-            return res;
+            if (res.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(res);
         }
 
-        // GET api/<LoanController>/5
+        
         [HttpGet("{id}")]
-        public LoanDetails Get(int id)
+        public IActionResult GetLoanDetailsById(int id)
         {
-            return _loanService.GetLoanDetailsById(id);
+            var res= _loanService.GetLoanDetailsById(id);
+            if (res == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(res);
         }
 
-        // POST api/<LoanController>
+        
         [HttpPost]
-        public void Post(LoanDetails loanDetails)
+        public IActionResult SaveLoanDetails(LoanDetails loanDetails)
         {
+            if (loanDetails == null)
+            {
+                return BadRequest("loanDetails is null.");
+            }
             _loanService.SaveLoanDetails(loanDetails);
+            return Ok();
         }
 
-        // PUT api/<LoanController>/5
+       
         [HttpPut("{id}")]
-        public void Put(LoanDetails loanDetails)
+        public IActionResult UpdateLoanDetails(LoanDetails loanDetails)
         {
+            if (loanDetails == null)
+            {
+                return BadRequest("loanDetails is null.");
+            }
             _loanService.UpdateLoanDetails(loanDetails);
+            return Ok();
         }
 
+        public IActionResult SearchLoanDetails(string? FirstName,string? LastName,int? LoanNumber)
+        {
+            return Ok();
+        }
         
     }
 }

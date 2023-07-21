@@ -8,6 +8,7 @@ namespace LMSApp.Interface
         LoanDetails GetLoanDetailsById(int LoanId);
         void SaveLoanDetails(LoanDetails loanDetails);
         void UpdateLoanDetails(LoanDetails loanDetails);
+        LoanDetails SerachLoanDetails(string? FirstName, string? LastName, int LoanNumber); 
 
     }
 }
