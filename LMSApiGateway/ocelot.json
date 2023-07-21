@@ -1,5 +1,6 @@
 {
   "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
     "BaseUrl": "http://localhost:5003"
   },
   "ReRoutes": [
