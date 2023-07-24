@@ -10,7 +10,7 @@ namespace LMSApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class LoanController : ControllerBase
     {
         private UserAccessDBContext _dBContext;

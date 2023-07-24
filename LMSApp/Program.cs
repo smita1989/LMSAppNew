@@ -14,10 +14,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<UserAccessDBContext>(options =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-    options.UseSqlServer(connectionString);
+    options.UseSqlServer(connectionString, providerOptions => providerOptions.EnableRetryOnFailure());
 });
 
 builder.Services.AddControllers();
+builder.Services.AddCors();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -84,7 +85,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseCors(x => { x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(); });
 IConfiguration configuration = app.Configuration;
 IWebHostEnvironment environment = app.Environment;
 
